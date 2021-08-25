@@ -6,6 +6,25 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -15,19 +34,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __importDefault(__nccwpck_require__(186));
-const github_1 = __importDefault(__nccwpck_require__(438));
+const core = __importStar(__nccwpck_require__(186));
+const github = __importStar(__nccwpck_require__(438));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            core_1.default.debug(`Here's what the webhook was: ${JSON.stringify(github_1.default.context.payload)}`);
+            core.debug(`Here's what the webhook was: ${JSON.stringify(github.context.payload)}`);
         }
         catch (e) {
-            core_1.default.setFailed(e.message);
+            core.setFailed(e.message);
         }
     });
 }
