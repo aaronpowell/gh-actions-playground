@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+
+jobs:
+  run_sample:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running the sample
+        uses: ./.github/actions/sample-action

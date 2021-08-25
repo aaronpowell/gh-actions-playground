@@ -1,0 +1,6 @@
+name: 'Aaron Powell'
+description: 'A sample GitHub Action'
+author: 'Aaron Powell'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
