@@ -3,7 +3,7 @@ import * as github from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    core.debug(
+    console.log(
       `Here's what the webhook was: ${JSON.stringify(github.context.payload)}`
     )
   } catch (e) {
