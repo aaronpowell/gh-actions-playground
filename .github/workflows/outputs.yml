@@ -14,7 +14,7 @@ jobs:
       - name: Set secret from var
         run: |
           FOO=bar
-          echo ""::add-mask name=SECRET_VAR::$FOO"
+          echo "::add-mask name=SECRET_VAR::$FOO"
 
       - name: Use secrets
         run: |
