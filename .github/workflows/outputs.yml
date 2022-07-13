@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  set_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set secret plain
+        runs: echo '::add-mask name=SECRET_PLAIN::value'
+
+      - name: Set secret from var
+        runs: |
+          FOO=bar
+          echo ""::add-mask name=SECRET_VAR::$FOO"
+
+      - name: Use secrets
+        runs: |
+          echo ${{ secrets.SECRET_PLAIN }}
+          echo ${{ secrets.SECRET_VAR }}
