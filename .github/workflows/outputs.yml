@@ -20,5 +20,5 @@ jobs:
 
       - name: Use secrets
         run: |
-          echo ${{ steps.plain.output.SECRET_PLAIN }}
-          echo ${{ steps.var.output.SECRET_VAR }}
+          echo Plain: ${{ steps.plain.output.SECRET_PLAIN }}
+          echo Var: ${{ steps.var.output.SECRET_VAR }}
