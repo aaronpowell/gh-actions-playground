@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set secret plain
-        runs: echo '::add-mask name=SECRET_PLAIN::value'
+        run: echo '::add-mask name=SECRET_PLAIN::value'
 
       - name: Set secret from var
-        runs: |
+        run: |
           FOO=bar
           echo ""::add-mask name=SECRET_VAR::$FOO"
 
       - name: Use secrets
-        runs: |
+        run: |
           echo ${{ secrets.SECRET_PLAIN }}
           echo ${{ secrets.SECRET_VAR }}
