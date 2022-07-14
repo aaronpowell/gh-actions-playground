@@ -8,17 +8,21 @@ jobs:
   set_secret:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup masking
+        run: |
+          echo "::add-mask::${{ steps.plain.outputs.SECRET_PLAIN }}"
+          echo "::add-mask::${{ steps.plain.outputs.SECRET_VAR }}"
       - name: Set secret plain
         id: plain
-        run: echo '::add-mask::value'
+        run: echo "::set-output name=SECRET_PLAIN::value"
 
       - name: Set secret from var
         id: var
         run: |
           FOO=bar
-          echo "::add-mask::$FOO"
+          echo "::set-output name=SECRET_VAR::$FOO"
 
       - name: Use secrets
         run: |
           echo Plain: ${{ steps.plain.outputs.SECRET_PLAIN }}
-          echo Var: ${{ steps.plain.outputs.SECRET_VAR }}
+          echo Var: ${{ steps.var.outputs.SECRET_VAR }}
