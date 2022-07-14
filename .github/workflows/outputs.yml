@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Set secret plain
         id: plain
-        run: echo ':add-mask::value'
+        run: echo '::add-mask::value'
 
       - name: Set secret from var
         id: var
