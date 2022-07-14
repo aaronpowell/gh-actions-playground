@@ -10,13 +10,13 @@ jobs:
     steps:
       - name: Set secret plain
         id: plain
-        run: echo '::set-output name=SECRET_PLAIN:add-mask::value'
+        run: echo ':add-mask::value'
 
       - name: Set secret from var
         id: var
         run: |
           FOO=bar
-          echo "::set-output name=SECRET_VAR::add-mask::$FOO"
+          echo "::add-mask::$FOO"
 
       - name: Use secrets
         run: |
