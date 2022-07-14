@@ -10,15 +10,15 @@ jobs:
     steps:
       - name: Set secret plain
         id: plain
-        run: echo '::add-mask name=SECRET_PLAIN::value'
+        run: echo SECRET_PLAIN='::add-mask::value' >> $GITHUB_ENV
 
       - name: Set secret from var
         id: var
         run: |
           FOO=bar
-          echo "::add-mask name=SECRET_VAR::$FOO"
+          echo SECRET_VAR="::add-mask::$FOO" >> $GITHUB_ENV
 
       - name: Use secrets
         run: |
-          echo Plain: ${{ steps.plain.outputs.SECRET_PLAIN }}
-          echo Var: ${{ steps.var.outputs.SECRET_VAR }}
+          echo Plain: ${{ env.SECRET_PLAIN }}
+          echo Var: ${{ env.SECRET_VAR }}
