@@ -16,7 +16,7 @@ jobs:
         id: var
         run: |
           FOO=bar
-          echo "::set-output name=SECRET_VAR::add-mask::$FOO" >> $GITHUB_ENV
+          echo "::set-output name=SECRET_VAR::add-mask::$FOO"
 
       - name: Use secrets
         run: |
