@@ -1,28 +1,13 @@
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+    workflow_dispatch:
+    push:
+        branches:
+            - main
 
 jobs:
-  set_secret:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup masking
-        run: |
-          echo "::add-mask::${{ steps.plain.outputs.SECRET_PLAIN }}"
-      - name: Set secret plain
-        id: plain
-        run: echo "::set-output name=SECRET_PLAIN::value"
-
-      - name: Set secret from var
-        id: var
-        run: |
-          FOO=bar
-          echo "::add-mask::$FOO"
-          echo "::set-output name=SECRET_VAR::$FOO"
-
-      - name: Use secrets
-        run: |
-          echo Plain: ${{ steps.plain.outputs.SECRET_PLAIN }}
-          echo Var: ${{ steps.var.outputs.SECRET_VAR }}
+    masking:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo '::add-mask::test'
+                echo This is a test
