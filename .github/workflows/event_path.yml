@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - runs: |
-        ls $GITHUB_EVENT_PATH
-        cat $GITHUB_EVENT_PATH
+          ls $GITHUB_EVENT_PATH
+          cat $GITHUB_EVENT_PATH
