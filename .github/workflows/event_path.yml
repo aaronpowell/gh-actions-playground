@@ -8,6 +8,6 @@ jobs:
   a:
     runs-on: ubuntu-latest
     steps:
-      - runs: |
+      - run: |
           ls $GITHUB_EVENT_PATH
           cat $GITHUB_EVENT_PATH
