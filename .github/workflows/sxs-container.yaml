@@ -31,5 +31,5 @@ jobs:
     steps:
       - run: |
           echo Checking if cosmos is up
-          curl -vs http://localhost:8081/_explorer/emulator.pem > emulator.pem
+          curl -vs http://cosmos:8081/_explorer/emulator.pem > emulator.pem
           ls
