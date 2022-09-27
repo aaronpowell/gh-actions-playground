@@ -25,7 +25,7 @@ jobs:
           --cpus=2.0
           --tty
           --interactive
-          --health-cmd "ls"
+          --health-cmd "if [[ $(ps aux | grep './cosmosdb-emulator' | wc -l) = 3 ]]; then exit 0; else exit 1; fi"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -38,8 +38,5 @@ jobs:
     steps:
       - run: |
           echo Checking if cosmos is up
-          for i in {1..10}; do
-            curl -vskf http://cosmos:8081/_explorer/emulator.pem > emulator.pem
-            ls
-            sleep 1
-          done
+          curl -vskf http://cosmos:8081/_explorer/emulator.pem > emulator.pem
+          ls
