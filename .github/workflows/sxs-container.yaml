@@ -1,0 +1,35 @@
+name: Workflow with containers
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sxs-container.yaml"
+
+jobs:
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:latest
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      cosmos:
+        # Docker Hub image
+        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+        options: >-
+          --memory 3g
+          --cpus=2.0
+          -e AZURE_COSMOS_EMULATOR_PARTITION_COUNT=10
+          -e AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+        ports:
+          - 8081:8081
+
+    steps:
+      - run: |
+          echo Checking if cosmos is up
+          curl -s http://localhost:8081/_explorer/emulator.pem > emulator.pem
+          ls
