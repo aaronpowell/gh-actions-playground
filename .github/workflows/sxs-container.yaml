@@ -23,7 +23,7 @@ jobs:
         options: >-
           --memory 3g
           --cpus=2.0
-          --health-cmd "sleep 1"
+          --health-cmd "curl -f http://localhost:8081/_explorer/emulator.html || exit 1"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
