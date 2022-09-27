@@ -32,6 +32,8 @@ jobs:
     steps:
       - run: |
           echo Checking if cosmos is up
-          docker ps -a
-          curl -vskf http://cosmos:8081/_explorer/emulator.pem > emulator.pem
-          ls
+          for i in {1..10}; do
+            curl -vskf http://cosmos:8081/_explorer/emulator.pem > emulator.pem
+            ls
+            sleep 1
+          done
