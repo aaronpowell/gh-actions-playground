@@ -23,6 +23,10 @@ jobs:
         options: >-
           --memory 3g
           --cpus=2.0
+          --health-cmd "echo Testing"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         ports:
           - 8081:8081
         env:
