@@ -23,13 +23,15 @@ jobs:
         options: >-
           --memory 3g
           --cpus=2.0
-          -e AZURE_COSMOS_EMULATOR_PARTITION_COUNT=10
-          -e AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
         ports:
           - 8081:8081
+        env:
+          AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 10
+          AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: true
 
     steps:
       - run: |
           echo Checking if cosmos is up
+          docker ps -a
           curl -vskf http://cosmos:8081/_explorer/emulator.pem > emulator.pem
           ls
